@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+/* Quiz.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap'); */
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Quiz Component Styles */
+@layer components {
+  /* Background */
+  .romantic-quiz {
+    @apply h-screen flex justify-center items-center p-4 relative overflow-hidden;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Floating hearts animation */
+  .romantic-quiz::before {
+    content: "❤️ 💕 💖 🌸";
+    @apply absolute text-4xl opacity-30;
+    animation: float 12s linear infinite;
+    top: 100%;
+    left: 10%;
+  }
+
+  /* Quiz Overlay */
+  .quiz-overlay {
+    @apply fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .quiz-overlay .question-card,
+  .quiz-overlay .completion-card,
+  .quiz-overlay .failure-card {
+    @apply bg-white rounded-3xl p-8 max-w-lg w-full max-h-screen overflow-y-auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  /* Question Cards */
+  .question-card, 
+  .completion-card, 
+  .failure-card {
+    @apply text-center rounded-3xl p-8 w-full max-w-lg mx-auto;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 18px rgba(255, 100, 150, 0.3);
+  }
+
+  /* Progress indicator */
+  .question-progress {
+    @apply text-sm text-gray-500 mb-4 font-medium;
+  }
+
+  /* Question title */
+  .question-title {
+    @apply text-2xl mb-6 text-pink-500 font-semibold;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  /* Options container */
+  .options {
+    @apply flex flex-col gap-4 mb-6;
+  }
+
+  /* Option buttons */
+  .option-btn {
+    @apply p-4 rounded-2xl text-base cursor-pointer transition-all duration-300 border-2;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #ffc1cc;
+  }
+
+  .option-btn:hover {
+    @apply bg-pink-50;
+  }
+
+  .option-btn.selected {
+    @apply text-white;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    box-shadow: 0 4px 12px rgba(255, 100, 150, 0.4);
+  }
+
+  /* Next button */
+  .next-btn {
+    @apply mt-6 px-8 py-3 rounded-3xl text-white text-base cursor-pointer transition-all duration-300;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  }
+
+  .next-btn:hover:not(:disabled) {
+    box-shadow: 0 6px 18px rgba(255, 120, 160, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .next-btn:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  /* Continue button */
+  .continue-btn {
+    @apply mt-6 px-8 py-3 rounded-3xl text-white text-base cursor-pointer transition-all duration-300;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  }
+
+  .continue-btn:hover {
+    box-shadow: 0 6px 18px rgba(255, 120, 160, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Completion card styles */
+  .completion-card h2 {
+    @apply text-pink-500 text-3xl mb-4;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .completion-card p {
+    @apply mt-4 text-gray-700 text-base leading-relaxed;
+  }
+
+  .completion-card .heart {
+    @apply text-3xl mt-4 block;
+  }
+
+  /* Failure card styles */
+  .failure-card {
+    background: linear-gradient(135deg, #ffeef3, #fdf2f8);
+  }
+
+  .failure-card h2 {
+    @apply text-pink-500 mb-4 text-2xl;
+  }
+
+  .failure-card p {
+    @apply text-gray-600 mb-4 leading-relaxed;
+  }
+
+  .failure-buttons {
+    @apply flex gap-4 justify-center mt-8;
+  }
+
+  .retry-btn, 
+  .home-btn {
+    @apply px-6 py-3 rounded-3xl font-semibold cursor-pointer transition-all duration-300;
+  }
+
+  .retry-btn {
+    background: linear-gradient(135deg, #ec4899, #f97316);
+    @apply text-white;
+  }
+
+  .home-btn {
+    background: linear-gradient(135deg, #6b7280, #4b5563);
+    @apply text-white;
+  }
+
+  .retry-btn:hover, 
+  .home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Bonus question styles */
+  .bonus-card {
+    @apply border-4 border-yellow-400;
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  }
+
+  .bonus-header {
+    @apply text-white p-4 rounded-2xl mb-6;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+  }
+
+  .bonus-header h3 {
+    @apply m-0 mb-2 text-xl font-semibold;
+  }
+
+  .bonus-header p {
+    @apply m-0 text-sm opacity-90;
+  }
+
+  .bonus-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    @apply text-white font-semibold;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  }
+
+  .bonus-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  }
+
+  /* Ensure quiz overlay content is above other elements */
+  .quiz-overlay * {
+    @apply relative z-50;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% { 
+    transform: translateY(0); 
+    opacity: 0.3; 
+  }
+  50% { 
+    opacity: 0.6; 
+  }
+  100% { 
+    transform: translateY(-120vh); 
+    opacity: 0; 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .question-card, 
+  .completion-card, 
+  .failure-card {
+    @apply p-6 mx-4;
+  }
+
+  .question-title {
+    @apply text-xl;
+  }
+
+  .option-btn {
+    @apply p-3 text-sm;
+  }
+
+  .next-btn, 
+  .continue-btn {
+    @apply px-6 py-2 text-sm;
+  }
+
+  .failure-buttons {
+    @apply flex-col gap-3;
+  }
+
+  .retry-btn, 
+  .home-btn {
+    @apply w-full;
+  }
+}
+
+/* Loading animation for question transitions */
+.question-card {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Confetti container adjustment */
+.romantic-quiz canvas {
+  @apply pointer-events-none;
+}
+/* Add to your existing CSS file */
+
+/* Quiz Loader Styles */
+.quiz-loader {
+  @apply fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  overflow: hidden;
+}
+
+.loader-bg {
+  @apply absolute inset-0;
+}
+
+.floating-hearts {
+  @apply absolute inset-0;
+}
+
+.heart {
+  @apply absolute text-3xl pointer-events-none;
+  animation: floatUp 3s linear infinite;
+}
+
+.loader-content {
+  @apply relative z-10 text-center max-w-md mx-auto px-6;
+}
+
+.slide-container {
+  @apply mb-8;
+}
+
+.slide-emoji {
+  @apply text-6xl mb-4 animate-bounce;
+}
+
+.slide-text {
+  @apply text-2xl font-bold text-white mb-2;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.slide-subtext {
+  @apply text-lg text-pink-100 opacity-90;
+  font-family: 'Poppins', sans-serif;
+}
+
+.progress-container {
+  @apply mb-6;
+}
+
+.progress-bar {
+  @apply w-full h-2 bg-white bg-opacity-30 rounded-full overflow-hidden mb-2;
+}
+
+.progress-fill {
+  @apply h-full bg-white rounded-full;
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.progress-text {
+  @apply text-sm text-white opacity-80 font-medium;
+}
+
+.slide-indicators {
+  @apply flex justify-center gap-2 mb-6;
+}
+
+.indicator {
+  @apply w-2 h-2 rounded-full bg-white bg-opacity-40 transition-all duration-300;
+}
+
+.indicator.active {
+  @apply bg-white bg-opacity-100 transform scale-125;
+}
+
+.loading-animation {
+  @apply flex justify-center;
+}
+
+.spinner {
+  @apply relative w-12 h-12;
+}
+
+.heart-spinner {
+  @apply absolute inset-0 flex items-center justify-center text-2xl;
+  animation: spin 2s linear infinite;
+}
+
+/* Animations */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .slide-emoji {
+    @apply text-4xl;
+  }
+  
+  .slide-text {
+    @apply text-xl;
+  }
+  
+  .slide-subtext {
+    @apply text-base;
+  }
+  
+  .loader-content {
+    @apply px-4;
+  }
+}
+
+/* Extra romantic touches */
+.quiz-loader::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
