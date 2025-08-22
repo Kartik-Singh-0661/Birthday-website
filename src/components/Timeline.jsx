@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 
 // Import your photos from assets/photos/
-import firstMeeting from '../assets/photos/OROG4136.JPG';
-import gravityRestro from '../assets/photos/IMG_E2241.JPG';
-import mandirPhoto from '../assets/photos/IMG_5475.JPG';
-import rishikeshPhoto1 from '../assets/photos/IMG_2545.JPG';
-import rishikeshPhoto2 from '../assets/photos/EJJQ5111.PNG';
-import rishikeshPhoto3 from '../assets/photos/BDGF7120.JPG';
-import togetherPhoto from '../assets/photos/DUMV7780.JPG';
+import firstMeeting from '../assets/photos/P1.jpeg';
+import gravityRestro from '../assets/photos/P2.jpeg';
+import mandirPhoto from '../assets/photos/P3.jpeg';
+import rishikeshPhoto1 from '../assets/photos/P4.jpeg';
+import rishikeshPhoto2 from '../assets/photos/P5.jpeg';
+import rishikeshPhoto3 from '../assets/photos/P6.jpeg';
+import togetherPhoto from '../assets/photos/P7.jpeg';
 
 const Timeline = () => {
   const navigate = useNavigate();
@@ -128,17 +128,17 @@ Waqt ruk gaya tha us trip mein. Memories, photos, smiles – sab eternal.`,
       photos: [
         {
           src: rishikeshPhoto1,
-          caption: "Rishikesh ki raat",
+          caption: "Pyaar",
           rotate: 3
         },
         {
           src: rishikeshPhoto2,
-          caption: "Mandir ke samne",
+          caption: "💟",
           rotate: -1
         },
         {
           src: rishikeshPhoto3,
-          caption: "Perfect moments",
+          caption: "Rishikesh",
           rotate: 2
         }
       ],
