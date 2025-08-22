@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Quiz.css */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap'); */
-
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -18,7 +15,8 @@
   /* Floating hearts animation */
   .romantic-quiz::before {
     content: "❤️ 💕 💖 🌸";
-    @apply absolute text-4xl opacity-30;
+    @apply absolute text-4xl;
+    opacity: 0.3;
     animation: float 12s linear infinite;
     top: 100%;
     left: 10%;
@@ -33,7 +31,8 @@
   .quiz-overlay .question-card,
   .quiz-overlay .completion-card,
   .quiz-overlay .failure-card {
-    @apply bg-white rounded-3xl p-8 max-w-lg w-full max-h-screen overflow-y-auto;
+    @apply rounded-3xl p-8 max-w-lg w-full max-h-screen overflow-y-auto;
+    background: rgba(255, 255, 255, 1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     max-width: 90vw;
     max-height: 90vh;
@@ -50,12 +49,14 @@
 
   /* Progress indicator */
   .question-progress {
-    @apply text-sm text-gray-500 mb-4 font-medium;
+    @apply text-sm mb-4 font-medium;
+    color: rgba(107, 114, 128, 1);
   }
 
   /* Question title */
   .question-title {
-    @apply text-2xl mb-6 text-pink-500 font-semibold;
+    @apply text-2xl mb-6 font-semibold;
+    color: rgba(236, 72, 153, 1);
     font-family: 'Dancing Script', cursive;
   }
 
@@ -72,7 +73,7 @@
   }
 
   .option-btn:hover {
-    @apply bg-pink-50;
+    background: rgba(251, 207, 232, 1);
   }
 
   .option-btn.selected {
@@ -93,7 +94,8 @@
   }
 
   .next-btn:disabled {
-    @apply opacity-60 cursor-not-allowed;
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 
   /* Continue button */
@@ -109,12 +111,14 @@
 
   /* Completion card styles */
   .completion-card h2 {
-    @apply text-pink-500 text-3xl mb-4;
+    @apply text-3xl mb-4;
+    color: rgba(236, 72, 153, 1);
     font-family: 'Dancing Script', cursive;
   }
 
   .completion-card p {
-    @apply mt-4 text-gray-700 text-base leading-relaxed;
+    @apply mt-4 text-base leading-relaxed;
+    color: rgba(55, 65, 81, 1);
   }
 
   .completion-card .heart {
@@ -127,11 +131,13 @@
   }
 
   .failure-card h2 {
-    @apply text-pink-500 mb-4 text-2xl;
+    @apply mb-4 text-2xl;
+    color: rgba(236, 72, 153, 1);
   }
 
   .failure-card p {
-    @apply text-gray-600 mb-4 leading-relaxed;
+    @apply mb-4 leading-relaxed;
+    color: rgba(75, 85, 99, 1);
   }
 
   .failure-buttons {
@@ -140,17 +146,15 @@
 
   .retry-btn, 
   .home-btn {
-    @apply px-6 py-3 rounded-3xl font-semibold cursor-pointer transition-all duration-300;
+    @apply px-6 py-3 rounded-3xl font-semibold cursor-pointer transition-all duration-300 text-white;
   }
 
   .retry-btn {
     background: linear-gradient(135deg, #ec4899, #f97316);
-    @apply text-white;
   }
 
   .home-btn {
     background: linear-gradient(135deg, #6b7280, #4b5563);
-    @apply text-white;
   }
 
   .retry-btn:hover, 
@@ -161,7 +165,8 @@
 
   /* Bonus question styles */
   .bonus-card {
-    @apply border-4 border-yellow-400;
+    @apply border-4;
+    border-color: rgba(251, 191, 36, 1);
     background: linear-gradient(135deg, #fffbeb, #fef3c7);
   }
 
@@ -175,7 +180,8 @@
   }
 
   .bonus-header p {
-    @apply m-0 text-sm opacity-90;
+    @apply m-0 text-sm;
+    opacity: 0.9;
   }
 
   .bonus-btn {
@@ -195,6 +201,98 @@
   }
 }
 
+/* Quiz Loader Styles */
+.quiz-loader {
+  @apply fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  overflow: hidden;
+}
+
+.loader-bg {
+  @apply absolute inset-0;
+}
+
+.floating-hearts {
+  @apply absolute inset-0;
+}
+
+.heart {
+  @apply absolute text-3xl pointer-events-none;
+  animation: floatUp 3s linear infinite;
+}
+
+.loader-content {
+  @apply relative z-10 text-center max-w-md mx-auto px-6;
+}
+
+.slide-container {
+  @apply mb-8;
+}
+
+.slide-emoji {
+  @apply text-6xl mb-4;
+  animation: bounce 1s infinite;
+}
+
+.slide-text {
+  @apply text-2xl font-bold text-white mb-2;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.slide-subtext {
+  @apply text-lg mb-2;
+  color: rgba(255, 182, 193, 0.9);
+  font-family: 'Poppins', sans-serif;
+}
+
+.progress-container {
+  @apply mb-6;
+}
+
+.progress-bar {
+  @apply w-full h-2 rounded-full overflow-hidden mb-2;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.progress-fill {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.progress-text {
+  @apply text-sm text-white font-medium;
+  opacity: 0.8;
+}
+
+.slide-indicators {
+  @apply flex justify-center gap-2 mb-6;
+}
+
+.indicator {
+  @apply w-2 h-2 rounded-full transition-all duration-300;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.25);
+}
+
+.loading-animation {
+  @apply flex justify-center;
+}
+
+.spinner {
+  @apply relative w-12 h-12;
+}
+
+.heart-spinner {
+  @apply absolute inset-0 flex items-center justify-center text-2xl;
+  animation: spin 2s linear infinite;
+}
+
 /* Animations */
 @keyframes float {
   0% { 
@@ -208,6 +306,49 @@
     transform: translateY(-120vh); 
     opacity: 0; 
   }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 /* Responsive adjustments */
@@ -239,6 +380,22 @@
   .home-btn {
     @apply w-full;
   }
+
+  .slide-emoji {
+    @apply text-4xl;
+  }
+  
+  .slide-text {
+    @apply text-xl;
+  }
+  
+  .slide-subtext {
+    @apply text-base;
+  }
+  
+  .loader-content {
+    @apply px-4;
+  }
 }
 
 /* Loading animation for question transitions */
@@ -261,139 +418,6 @@
 .romantic-quiz canvas {
   @apply pointer-events-none;
 }
-/* Add to your existing CSS file */
-
-/* Quiz Loader Styles */
-.quiz-loader {
-  @apply fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-  overflow: hidden;
-}
-
-.loader-bg {
-  @apply absolute inset-0;
-}
-
-.floating-hearts {
-  @apply absolute inset-0;
-}
-
-.heart {
-  @apply absolute text-3xl pointer-events-none;
-  animation: floatUp 3s linear infinite;
-}
-
-.loader-content {
-  @apply relative z-10 text-center max-w-md mx-auto px-6;
-}
-
-.slide-container {
-  @apply mb-8;
-}
-
-.slide-emoji {
-  @apply text-6xl mb-4 animate-bounce;
-}
-
-.slide-text {
-  @apply text-2xl font-bold text-white mb-2;
-  font-family: 'Dancing Script', cursive;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.slide-subtext {
-  @apply text-lg text-pink-100 opacity-90;
-  font-family: 'Poppins', sans-serif;
-}
-
-.progress-container {
-  @apply mb-6;
-}
-
-.progress-bar {
-  @apply w-full h-2 bg-white bg-opacity-30 rounded-full overflow-hidden mb-2;
-}
-
-.progress-fill {
-  @apply h-full bg-white rounded-full;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.progress-text {
-  @apply text-sm text-white opacity-80 font-medium;
-}
-
-.slide-indicators {
-  @apply flex justify-center gap-2 mb-6;
-}
-
-.indicator {
-  @apply w-2 h-2 rounded-full bg-white bg-opacity-40 transition-all duration-300;
-}
-
-.indicator.active {
-  @apply bg-white bg-opacity-100 transform scale-125;
-}
-
-.loading-animation {
-  @apply flex justify-center;
-}
-
-.spinner {
-  @apply relative w-12 h-12;
-}
-
-.heart-spinner {
-  @apply absolute inset-0 flex items-center justify-center text-2xl;
-  animation: spin 2s linear infinite;
-}
-
-/* Animations */
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100px) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .slide-emoji {
-    @apply text-4xl;
-  }
-  
-  .slide-text {
-    @apply text-xl;
-  }
-  
-  .slide-subtext {
-    @apply text-base;
-  }
-  
-  .loader-content {
-    @apply px-4;
-  }
-}
 
 /* Extra romantic touches */
 .quiz-loader::before {
@@ -404,9 +428,4 @@
     radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
   animation: shimmer 4s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
 }
