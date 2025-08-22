@@ -27,10 +27,10 @@ function AppContent() {
 
   return (
     <div className="app">
-      {!showCountdown && (
+      {showCountdown && (
         <CountdownLoader onComplete={handleCountdownComplete} />
       )}
-      {showCountdown && (
+      {!showCountdown && (
         <Routes>
           <Route path="/" element={<HeroSection />} />
           <Route path="/timeline" element={<Timeline />} />
