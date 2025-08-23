@@ -330,12 +330,12 @@ const BirthdayLetter = () => {
                 transition={{ delay: 0.8 }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => navigate("/gift")}
+                onClick={() => navigate("/")}
                 style={{
                   marginTop: "1rem",
                 }}
               >
-                Continue to Your Surprise
+                Thankyou ❣️
               </motion.button>
             </div>
           )}

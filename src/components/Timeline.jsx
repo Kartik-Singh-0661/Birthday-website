@@ -229,7 +229,7 @@ par ek cheez hamesha yaad rahegi – tum ho... toh sab hai." 💫`,
         <img
           src={photo.src}
           alt={photo.caption}
-          className="w-full h-32 sm:h-40 object-cover"
+          className="w-full h-32 sm:h-45 object-cover"
           onError={(e) => {
             e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y0ZjRmNCIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+UGhvdG88L3RleHQ+PC9zdmc+';
           }}
